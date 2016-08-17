@@ -84,3 +84,5 @@ vars = loadVars()
 baseAmi = vars["variable"]["deploy-ami"]["id"]
 
 run("cd terraform && terraform apply -refresh=true -var 'ami=" + baseAmi + "' -var 'key=" + creds["key"] + "' -var 'secret=" + creds["secret"] + "'")
+
+print "Deployment complete. Please wait a minute or so for the instance(s) to report healthy."
