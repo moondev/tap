@@ -10,7 +10,7 @@ provider "aws" {
 }
 
 resource "aws_elb" "web-elb" {
-  name = "cmoon"
+  name = "cmoon-code"
 
   # The same availability zone as our instances
   availability_zones = ["us-west-2a"]
@@ -33,7 +33,7 @@ resource "aws_elb" "web-elb" {
 
 resource "aws_autoscaling_group" "web-asg" {
   availability_zones = ["us-west-2a"]
-  name = "cmoon"
+  name = "cmoon-code"
   max_size = "1"
   min_size = "1"
   desired_capacity = "1"
@@ -49,7 +49,7 @@ resource "aws_autoscaling_group" "web-asg" {
 }
 
 resource "aws_launch_configuration" "web-lc" {
-  name = "cmoon"
+  name = "cmoon-code"
   image_id = "${var.ami}"
   instance_type = "t2.micro"
   # Security group
