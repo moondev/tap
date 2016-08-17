@@ -1,0 +1,12 @@
+{  
+  "variable":{  
+    "base-ami":{  
+      "id":"none",
+      "md5":"none"
+    },
+    "deploy-ami":{  
+      "id":"none",
+      "md5":"none"
+    }
+  }
+}

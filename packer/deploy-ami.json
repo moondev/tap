@@ -1,0 +1,27 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `key`}}",
+    "secret_key": "{{user `secret`}}",
+    "region": "us-west-2",
+    "source_ami": "{{user `baseAmi`}}",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "cmoon bake {{timestamp}}"
+  }],
+  "provisioners": [
+
+    {
+      "type": "shell",
+      "inline": ["sudo rm -rf /var/www/html",
+                 "sudo mkdir /var/www/html",
+                  "sudo chmod -R 0777 /var/www/html"]
+    },
+
+   {
+  "type": "file",
+  "source": "./workdir/",
+  "destination": "/var/www/html/"
+   }
+  ]
+}
