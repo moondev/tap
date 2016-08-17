@@ -83,7 +83,4 @@ with open('aws.json', 'r') as f:
 vars = loadVars()
 baseAmi = vars["variable"]["deploy-ami"]["id"]
 
-##would be better if this was blue green
-run("cd terraform && terraform destroy -var 'ami=" + baseAmi + "' -var 'key=" + creds["key"] + "' -var 'secret=" + creds["secret"] + "'")
-
-run("cd terraform && terraform apply -var 'ami=" + baseAmi + "' -var 'key=" + creds["key"] + "' -var 'secret=" + creds["secret"] + "'")
+run("cd terraform && terraform apply -refresh=true -var 'ami=" + baseAmi + "' -var 'key=" + creds["key"] + "' -var 'secret=" + creds["secret"] + "'")
